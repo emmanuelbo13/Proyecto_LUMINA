@@ -24,6 +24,17 @@ public class Grado {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
+    /** Dos objetos son iguales si tienen el mismo id (lo usan los JComboBox). */
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Grado otro && otro.idGrado == idGrado;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idGrado);
+    }
+
     @Override
     public String toString() {
         return nombre;

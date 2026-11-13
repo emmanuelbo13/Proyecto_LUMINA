@@ -29,6 +29,17 @@ public class Rol {
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
+    /** Dos objetos son iguales si tienen el mismo id (lo usan los JComboBox). */
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Rol otro && otro.idRol == idRol;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idRol);
+    }
+
     @Override
     public String toString() {
         return nombre;

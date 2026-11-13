@@ -47,6 +47,15 @@ public class EjemplarDAOImpl extends DAOBase implements EjemplarDAO {
     }
 
     @Override
+    public boolean cambiarEstado(int idMaterial, int numeroEjemplar, EstadoEjemplar estadoActual,
+                                 EstadoEjemplar nuevoEstado) {
+        return ejecutarUpdate("""
+                UPDATE ejemplar SET estado = ?
+                WHERE id_material = ? AND numero_ejemplar = ? AND estado = ?""",
+                nuevoEstado, idMaterial, numeroEjemplar, estadoActual) > 0;
+    }
+
+    @Override
     public Optional<Ejemplar> buscar(int idMaterial, int numeroEjemplar) {
         return consultarUno(SELECT + " WHERE id_material = ? AND numero_ejemplar = ?",
                 EjemplarDAOImpl::mapear, idMaterial, numeroEjemplar);

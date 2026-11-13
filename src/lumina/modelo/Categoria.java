@@ -28,6 +28,17 @@ public class Categoria {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
 
+    /** Dos objetos son iguales si tienen el mismo id (lo usan los JComboBox). */
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Categoria otro && otro.idCategoria == idCategoria;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(idCategoria);
+    }
+
     @Override
     public String toString() {
         return nombre;

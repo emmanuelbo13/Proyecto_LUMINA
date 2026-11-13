@@ -14,6 +14,13 @@ public interface EjemplarDAO {
 
     boolean cambiarEstado(int idMaterial, int numeroEjemplar, EstadoEjemplar estado);
 
+    /**
+     * Cambia el estado solo si el ejemplar está en estadoActual.
+     * Devuelve false si estaba en otro estado (por ejemplo, alguien lo acaba de reservar).
+     */
+    boolean cambiarEstado(int idMaterial, int numeroEjemplar, EstadoEjemplar estadoActual,
+                          EstadoEjemplar nuevoEstado);
+
     Optional<Ejemplar> buscar(int idMaterial, int numeroEjemplar);
 
     List<Ejemplar> listarPorMaterial(int idMaterial);

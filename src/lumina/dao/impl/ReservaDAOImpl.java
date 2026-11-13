@@ -50,6 +50,12 @@ public class ReservaDAOImpl extends DAOBase implements ReservaDAO {
     }
 
     @Override
+    public boolean cambiarEstado(int idReserva, EstadoReserva estadoActual, EstadoReserva nuevoEstado) {
+        return ejecutarUpdate("UPDATE reserva SET estado = ? WHERE id_reserva = ? AND estado = ?",
+                nuevoEstado, idReserva, estadoActual) > 0;
+    }
+
+    @Override
     public Optional<Reserva> buscarPorId(int idReserva) {
         return consultarUno(SELECT + " WHERE r.id_reserva = ?", ReservaDAOImpl::mapear, idReserva);
     }

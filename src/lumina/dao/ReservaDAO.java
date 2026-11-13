@@ -14,6 +14,9 @@ public interface ReservaDAO {
 
     boolean cambiarEstado(int idReserva, EstadoReserva estado);
 
+    /** Cambia el estado solo si la reserva está en estadoActual. Devuelve false en caso contrario. */
+    boolean cambiarEstado(int idReserva, EstadoReserva estadoActual, EstadoReserva nuevoEstado);
+
     Optional<Reserva> buscarPorId(int idReserva);
 
     List<Reserva> listar();
