@@ -21,6 +21,7 @@ import lumina.modelo.Material;
 import lumina.modelo.Persona;
 import lumina.modelo.Reserva;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -137,10 +138,8 @@ public class ReservaService {
         return new ReservaDAOImpl().listarPorEstado(EstadoReserva.ACTIVA);
     }
 
-    /** Lista las reservas en un estado, o todas si estado es null. */
-    public List<Reserva> listar(EstadoReserva estado) {
-        ReservaDAO dao = new ReservaDAOImpl();
-        return estado == null ? dao.listar() : dao.listarPorEstado(estado);
+    public List<Reserva> listarTodas() {
+        return new ReservaDAOImpl().listar();
     }
 
     // ------------------------------------------------------------------
